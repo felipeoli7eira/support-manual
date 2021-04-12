@@ -1,0 +1,140 @@
+:root {
+    --black: #222323;
+    --white: #f0f6f0;
+}
+
+section {
+    padding: 40px;
+}
+
+p {
+    text-align: justify;
+}
+
+.dark {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+.light {
+    background-color: var(--white);
+    color: var(--black);
+}
+
+.center {
+    text-align: center;
+}
+.block{
+    display: block;
+}
+.m-auto{
+    margin: auto;
+}
+
+.navbar {
+    padding: 5px 0 10px 0;
+}
+
+.title {
+    margin-bottom: -10px;
+    font-size: 50px;
+    font-variant: small-caps;
+    font-weight: 800;
+}
+
+.sub-tittle {
+    text-transform: capitalize;
+    font-weight: 400;
+}
+
+.intro-img {
+    width: 100%;
+    border: solid 5px var(--black);
+}
+
+.mini-content {
+    padding: 5px;
+    border: solid 2px var(--black);
+    transition: 0.2s;
+}
+
+@media screen and (max-width: 550px) {
+    .mini-content {
+        margin-top: 20px;
+    }
+}
+
+.mini-content:hover {
+    padding: 10px;
+    background-color: var(--black);
+    color: var(--white);
+    border: solid 2px var(--white);
+}
+
+.mini-content img {
+    width: 100%;
+    outline: solid 2px var(--black);
+}
+
+.mini-content img:hover {
+    outline: solid 2px var(--white);
+}
+
+.mini-content span {
+    display: block;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.redes-sociais>a {
+    margin: 0 5px 0 5px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.redes-sociais>a:hover {
+    font-size: 20px;
+    color: #00C2FF;
+}
+
+.clear-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.clear-link:hover {
+    text-decoration: none;
+    color: inherit;
+}
+.image-content{
+    margin: auto;
+    text-align: center;
+    width: 600px;
+}
+.image-content img{
+    display: inline-block;
+    width: inherit;
+    margin-bottom: -8px;
+}
+.post-container{
+    margin: auto;
+}
+.code-block{
+    display: block;
+}
+#postCode{
+    text-align: left;    
+    height: 400px;
+    font-family: monospace;
+    width: 960px;
+    border: 2px solid black;
+    padding: 5px;
+    /* white-space: pre-wrap; */
+    white-space: pre;
+    /* white-space: nowrap; */
+    overflow:auto;   
+}
+.tagColor{
+    color: lightcoral;
+    font-weight: 700;
+}
