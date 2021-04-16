@@ -23,9 +23,20 @@
   echo (isset($config['headerLight'])) ? "<nav class='navbar light'>" : "<nav class='navbar dark'>" ;  
 ?>
     <div class="container">
-      <a href="/" class="clear-link">
-        <h2 class="title">Support</h2>
-        <span class="sub-tittle">GUIA DE SOBREVIVENCIA</span>
-      </a>
+      <div class="row">
+        <div class="columns ten">
+          <a href="/" class="clear-link">
+            <h2 class="title">Support</h2>
+            <span class="sub-tittle">GUIA DE SOBREVIVENCIA</span>
+          </a>
+        </div>
+        <div class="columns two">
+          <?php
+            if(isset($_SESSION['user'])){
+              echo "<button onclick='window.location.href=`/sair`'>deslogar</button>";
+            }
+          ?>
+        </div>
+      </div>
     </div>
   </nav>

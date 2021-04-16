@@ -129,12 +129,27 @@ p {
     width: 960px;
     border: 2px solid black;
     padding: 5px;
-    /* white-space: pre-wrap; */
     white-space: pre;
-    /* white-space: nowrap; */
     overflow:auto;   
 }
 .tagColor{
     color: lightcoral;
     font-weight: 700;
+}
+.alert{
+    position:absolute;
+    left:50%;
+    top:5px;
+    transform:translateX(-50%);
+    padding:10px 20px;
+    border-radius:2px;
+    box-shadow:black 2px 2px 2px;
+}
+.success-alert{
+    background-color:#8ED19E;
+    color: var(--white);
+}
+.danger-alert{
+    background-color:#d45c5c;
+    color: var(--white);
 }

@@ -25,16 +25,23 @@ class Database
      * @param string $database Nome do banco de dados
      * @return object
      */
-    public static function connect(string $host,int $port, string $user,string $password,string $database): ?object
+    public static function connect(): ?object
     {
-        $dns = "mysql:host={$host};port={$port};dbname={$database}";
-        try
-        {
-            return new PDO($dns, $user,$password);
-        }
-        catch(PDOException $e)
-        {
-            echo '<pre>';print_r($e->getMessage());echo'</pre>';exit;
+        $config = [
+            "host" => "localhost",
+            "port" => "3306",
+            "user" => "root",
+            "password" => "",
+            "database" => "support"
+        ];
+        $dns = "mysql:host={$config['host']};port={$config['port']};dbname={$config['database']};charset=utf8";
+        try {
+            return new PDO($dns, $config['user'], $config['password']);
+        } catch (PDOException $e) {
+            echo '<pre>';
+            print_r($e->getMessage());
+            echo '</pre>';
+            exit;
         }
     }
 }
