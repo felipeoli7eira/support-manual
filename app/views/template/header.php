@@ -36,12 +36,13 @@
         ?>
           <div class="access-container">
             <a href="/perfil" class="button-perfil clear-link profile-hover">Perfil</a>
+            <a href="/sair" class="button-perfil clear-link logout-hover">Sair</a>
           </div>
         <?php
         }else{
         ?>
           <div class="access-container">
-            <a href="/login" class="button button-primary button-small">Entrar</a>
+            <a href="/login" class="button-perfil clear-link profile-hover">Entrar</a>
           </div>
         <?php
         }?>

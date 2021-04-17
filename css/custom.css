@@ -201,9 +201,29 @@ p {
 
 .profile-hover {
     transition: 0.3s;
+    border-radius: 4px;
+    border: solid var(--white) 1px;
+    padding: 5px 10px;
 }
 
 .profile-hover:hover {
-    color: #dfe6df;
-    font-size: 17px;
+    color: var(--black);
+    background-color: var(--white);
+    border: none;
+    border: solid var(--black) 1px;
+}
+.logout-hover{
+    transition: 0.3s;
+    border-radius: 4px;
+    border: solid var(--orange) 1px;
+    padding: 5px 10px;
+}
+.logout-hover:hover {
+    color: var(--white);
+    background-color: var(--orange);
+    border: none;
+    border: solid var(--orange) 1px;
+}
+main{
+    min-height: calc(100vh - 109px - 180.5px);
 }

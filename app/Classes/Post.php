@@ -32,7 +32,7 @@ class Post
             ":user_id"    => $userId
         ]);
 
-        return ($result) ? true : false;
+        return $result;
     }
     public static function updatePost(int $id, string $title, string $imageUrl = null, string $difficulty, string $content): bool
     {
@@ -73,6 +73,19 @@ class Post
         } else {
             return [];
         }
+    }
+    public static function removePost(int $id): bool
+    {
+        $con = Database::connect();
+
+        $sql = "DELETE FROM posts WHERE id = :id";
+
+        $statement = $con->prepare($sql);
+
+        $result = $statement->execute([
+            ":id" => $id
+        ]);
+        return $result;
     }
     public static function getAll(int $limit = null, string $order = "ASC"): array
     {

@@ -66,9 +66,7 @@ Route::add('/editar/([0-9]+)', function ($id) {
 });
 
 Route::add('/teste', function () {
-    echo '<pre>';
-    print_r($_SESSION);
-    echo '</pre>';
+    view('teste');
 });
 
 Route::add('/sair', function () {
@@ -81,7 +79,7 @@ Route::add('/sair', function () {
 Route::add('/perfil', function () {
     checkSession();
     $data = Post::getAllUser($_SESSION['user']['id']);
-    view('perfil',$data);
+    view('perfil',$data, ["footerDark" => true]);
 });
 
 /*
@@ -110,6 +108,7 @@ Route::add('/criar', function () {
 }, 'post');
 
 Route::add('/editar', function () {
+    checkSession();
     if (isset($_POST['postCode'])) {
         try {
             $res = Post::updatePost($_POST['id'], $_POST['postName'], $_POST['imageUrl'], $_POST['postDifficulty'], $_POST['postCode']);
@@ -128,10 +127,24 @@ Route::add('/editar', function () {
 }, 'post');
 
 Route::add('/login', function () {
-
     if (isset($_POST['email'])) {
         try {
             $res = User::login($_POST['email'], $_POST['password']);
+            if ($res) {
+                http_response_code(200);
+            } else {
+                http_response_code(500);
+            }
+        } catch (PDOException $exception) {
+            http_response_code(500);
+        }
+    }
+}, 'post');
+Route::add('/remover', function () {
+    checkSession();
+    if (isset($_POST['post_id'])) {
+        try {
+            $res = Post::removePost($_POST['post_id']);
             if ($res) {
                 http_response_code(200);
             } else {
