@@ -3,15 +3,22 @@
     <div class="row">
       <div class="five columns">
         <div>
-          <img src="https://steamuserimages-a.akamaihd.net/ugc/830196727540775822/AB2C9A1A2ADED44CC3BEEBD689B03E5E8D4E4290/" class="intro-img">
+          <img src="/images/tempSupport.png" class="intro-img">
         </div>
       </div>
       <div class="seven columns">
-        <h3>Quem Somos</h3>
+        <h3>Um pouco sobre nós</h3>
         <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam architecto veniam, repellat, voluptatibus
-          blanditiis obcaecati autem eius corrupti ex veritatis similique debitis cum, provident unde placeat quam
-          aliquam dolor. Obcaecati?
+          <!-- Este site nasceu para auxiliar aqueles estão entrando na webart e até mesmo para aqueles que já estão nela. -->
+          Muitas informações são necessárias para trabalharmos no nosso cotidiano, então acabamos por ter uma certa
+          dependência das as pessoas que possuem mais conhecimento. 
+        </p>
+        <p>A proposta deste site é disponibilizar o máximo de informações possíveis a fim de propocionar uma maior independência 
+          para a equipe de suporte, trazendo agilidade na consulta de informações e aumentando a eficiência do nosso serviço possibiliando
+          uma entrega mais rápida e de melhor qualidade para o cliente final.
+        </p>
+        <p>
+          <strong>Nós somos apoio e solução. Nós somos suporte!</strong>
         </p>
       </div>
     </div>

@@ -42,7 +42,6 @@ Route::add('/login', function () {
 
 
 Route::add('/postagem/([0-9]+)', function ($id) {
-    checkSession();
     $data = Post::getPost($id);
     if ($data) {
         view("post", $data[0]);
@@ -79,6 +78,12 @@ Route::add('/sair', function () {
     exit();
 });
 
+Route::add('/perfil', function () {
+    checkSession();
+    $data = Post::getAllUser($_SESSION['user']['id']);
+    view('perfil',$data);
+});
+
 /*
 
 ---- POST REQUESTS ----
@@ -89,7 +94,7 @@ Route::add('/criar', function () {
     checkSession();
     if (isset($_POST['postCode'])) {
         try {
-            $res = Post::createPost($_POST['postName'], $_POST['imageUrl'], $_POST['postDifficulty'], $_POST['postCode']);
+            $res = Post::createPost($_POST['postName'], $_POST['imageUrl'], $_POST['postDifficulty'], $_POST['postCode'], $_SESSION['user']['id']);
             if ($res) {
                 http_response_code(200);
             } else {

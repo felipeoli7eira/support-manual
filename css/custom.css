@@ -1,6 +1,7 @@
 :root {
     --black: #222323;
     --white: #f0f6f0;
+    --orange: #e7502c;
 }
 
 section {
@@ -9,6 +10,12 @@ section {
 
 p {
     text-align: justify;
+}
+
+.button-small {
+    line-height: 25px;
+    height: 25px;
+    padding: 0 5px;
 }
 
 .dark {
@@ -24,10 +31,12 @@ p {
 .center {
     text-align: center;
 }
-.block{
+
+.block {
     display: block;
 }
-.m-auto{
+
+.m-auto {
     margin: auto;
 }
 
@@ -40,6 +49,18 @@ p {
     font-size: 50px;
     font-variant: small-caps;
     font-weight: 800;
+}
+
+.display-table {
+    display: table;
+}
+
+.itens-center {
+    align-items: center;
+}
+
+.display-flex {
+    display: flex;
 }
 
 .sub-tittle {
@@ -106,50 +127,83 @@ p {
     text-decoration: none;
     color: inherit;
 }
-.image-content{
+
+.image-content {
     margin: auto;
     text-align: center;
     width: 600px;
 }
-.image-content img{
+
+.image-content img {
     display: inline-block;
     width: inherit;
     margin-bottom: -8px;
 }
-.post-container{
+
+.post-container {
     margin: auto;
 }
-.code-block{
+
+.code-block {
     display: block;
 }
-#postCode{
-    text-align: left;    
+
+#postCode {
+    text-align: left;
     height: 400px;
     font-family: monospace;
-    width: 960px;
+    width: 100%;
     border: 2px solid black;
     padding: 5px;
     white-space: pre;
-    overflow:auto;   
+    overflow: auto;
+    resize: vertical
 }
-.tagColor{
+
+.tagColor {
     color: lightcoral;
     font-weight: 700;
 }
-.alert{
-    position:absolute;
-    left:50%;
-    top:5px;
-    transform:translateX(-50%);
-    padding:10px 20px;
-    border-radius:2px;
-    box-shadow:black 2px 2px 2px;
+
+.alert {
+    position: absolute;
+    left: 50%;
+    top: 5px;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    border-radius: 2px;
+    box-shadow: black 2px 2px 2px;
 }
-.success-alert{
-    background-color:#8ED19E;
+
+.success-alert {
+    background-color: #8ED19E;
     color: var(--white);
 }
-.danger-alert{
-    background-color:#d45c5c;
+
+.danger-alert {
+    background-color: #d45c5c;
     color: var(--white);
+}
+
+.button-perfil {
+    color: var(--white);
+    font-weight: 800;
+    margin: 0 10px 0 0;
+}
+
+.access-container {
+    text-align: right;
+}
+
+.access-container * {
+    margin: auto;
+}
+
+.profile-hover {
+    transition: 0.3s;
+}
+
+.profile-hover:hover {
+    color: #dfe6df;
+    font-size: 17px;
 }

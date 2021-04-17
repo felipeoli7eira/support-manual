@@ -21,7 +21,7 @@ class User
     {
         $con = Database::connect();
 
-        $sql = "SELECT `id`,`access`,`password` FROM users WHERE email = :email";
+        $sql = "SELECT `id`, `access`, `password`, `name` FROM users WHERE email = :email";
 
         $statement = $con->prepare($sql);
 
@@ -33,7 +33,7 @@ class User
             $data = $statement->fetch(PDO::FETCH_ASSOC);
             if ($data) {
                 if (password_verify($password, $data['password'])) {
-                    $_SESSION['user'] = ["id" => $data['id'], "access" => $data['access']];
+                    $_SESSION['user'] = ["id" => $data['id'], "access" => $data['access'], "name" => $data['name']];
                     return true;
                 }
             } else {

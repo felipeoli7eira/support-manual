@@ -19,24 +19,33 @@
 </head>
 
 <body>
-<?php
-  echo (isset($config['headerLight'])) ? "<nav class='navbar light'>" : "<nav class='navbar dark'>" ;  
-?>
-    <div class="container">
-      <div class="row">
-        <div class="columns ten">
-          <a href="/" class="clear-link">
-            <h2 class="title">Support</h2>
-            <span class="sub-tittle">GUIA DE SOBREVIVENCIA</span>
-          </a>
-        </div>
-        <div class="columns two">
-          <?php
-            if(isset($_SESSION['user'])){
-              echo "<button onclick='window.location.href=`/sair`'>deslogar</button>";
-            }
-          ?>
-        </div>
+  <?php
+  echo (isset($config['headerLight'])) ? "<nav class='navbar light'>" : "<nav class='navbar dark'>";
+  ?>
+  <div class="container">
+    <div class="row display-flex itens-center">
+      <div class="columns nine">
+        <a href="/" class="clear-link display-table">
+          <div class="title">Support</div>
+          <div class="sub-tittle">GUIA DE SOBREVIVENCIA</div>
+        </a>
+      </div>
+      <div class="columns three">
+        <?php
+        if (isset($_SESSION['user'])) {
+        ?>
+          <div class="access-container">
+            <a href="/perfil" class="button-perfil clear-link profile-hover">Perfil</a>
+          </div>
+        <?php
+        }else{
+        ?>
+          <div class="access-container">
+            <a href="/login" class="button button-primary button-small">Entrar</a>
+          </div>
+        <?php
+        }?>
       </div>
     </div>
+  </div>
   </nav>

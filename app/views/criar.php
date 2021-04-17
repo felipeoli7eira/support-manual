@@ -10,18 +10,20 @@
     <form method="POST">
         <div class="row">
             <div class="four columns center preview">
-                <input name="postName" required placeholder="Nome do post">
+                <label>Titulo do post</label>
+                <input type="text" name="postName" required>
             </div>
             <div class="four columns center preview">
+                <label>Dificuldade</label>
                 <select name="postDifficulty">
-                    <option disabled>Dificuldade</option>
-                    <option>Baixa</option>
-                    <option>Média</option>
-                    <option>Alta</option>
+                    <option value="1">Baixa</option>
+                    <option value="2">Média</option>
+                    <option value="3">Alta</option>
                 </select>
             </div>
             <div class="four columns center preview">
-                <input name="imageUrl" placeholder="Imagem do post">
+                <label>Imagem do post</label>
+                <input type="text" name="imageUrl">
             </div>
         </div>
         <div class="row">

@@ -6,11 +6,7 @@ $('form').on('submit',(event)=>{
         type:"post",
         data:data,
         success: (data)=>{
-            console.log(data);
-            $("html, body").animate({ scrollTop: 0 }, 600, );
-            let alertBox = $("<div></div>").text("Post atualizado com sucesso!").addClass('alert success-alert')
-            $('info').append(alertBox).hide().delay(500).fadeIn(200);
-            $('info div').delay(2400).fadeOut(500)
+            window.location.href="/";
         },
         error: ()=>{
             $("html, body").animate({ scrollTop: 0 }, 600);
