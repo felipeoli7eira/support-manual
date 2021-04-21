@@ -1,19 +1,6 @@
 <?php
 
-/**
- * @param array $params
- * @param bool $htmlScape
- * @param bool $exit
- * @return void
-*/
-function dd(array $params = [], bool $htmlScape = false, bool $exit = true): void
-{
-    echo '<pre>';
-    print_r($htmlScape ? htmlspecialchars($params) : $params);
-    echo'</pre>';
 
-    if($exit) exit;
-}
 
 /**
  * Função responsável por renderizar as views (app/views)
@@ -51,38 +38,4 @@ function rawView(string $viewName, ?array $data = [], ?array $config = null): vo
         extract($data);
     }
     require __DIR__ . "\\..\\views\\{$viewName}.php";
-}
-
-/**
- * Função responsável por montar uma URL válida, por exemplo
- * {{protocolo}}://{{host}}/{{caminho/para/a/raiz/do/projetp}}/
-*/
-function url(): string
-{
-    return $_SERVER['REQUEST_SCHEME'] . "://{$_SERVER['HTTP_HOST']}/{$_SERVER['REQUEST_URI']}/";
-}
-
-/**
- * Função responsável por linkar um arquivo da pasta public ou qualquer
- * arquivo dentro dela
-*/
-function asset(string $resource): string
-{
-    return url() . "public/{$resource}";
-}
-
-/**
- * Função responsável por linkar um arquivo CSS
-*/
-function css(string $fileName): string
-{
-    return url() . "public/css/{$fileName}.css";
-}
-
-/**
- * Função responsável por linkar um arquivo JavaScript
-*/
-function js(string $fileName): string
-{
-    return url() . "public/js/{$fileName}.js";
 }

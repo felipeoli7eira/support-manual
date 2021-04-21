@@ -4,6 +4,10 @@
     --orange: #e7502c;
 }
 
+body{
+    background-color: var(--white);
+}
+
 section {
     padding: 40px;
 }
@@ -94,7 +98,13 @@ p {
 
 .mini-content img {
     width: 100%;
+    height: 200px;
     outline: solid 2px var(--black);
+}
+@media (min-width: 550px) {
+    .content-row{
+        margin-top: 25px;
+    }
 }
 
 .mini-content img:hover {
@@ -224,6 +234,11 @@ p {
     border: none;
     border: solid var(--orange) 1px;
 }
+.post-content-view{
+    padding: 50px 0;
+    min-height: calc(100vh - 109px - 180.5px - 100px);
+}
 main{
-    min-height: calc(100vh - 109px - 180.5px);
+    padding: 50px 0;
+    min-height: calc(100vh - 109px - 180.5px - 100px);
 }

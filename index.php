@@ -19,6 +19,8 @@ session_start();
 
 Route::add('/', function () {
     $data = Post::getAll(4, 'DESC');
+
+
     $data = array_map(function ($line) {
         switch ($line['difficulty']) {
             case 1:
@@ -31,8 +33,10 @@ Route::add('/', function () {
                 $line['difficulty'] = 'Alta';
                 break;
         }
+        if ($line['imageUrl'] == "") $line['imageUrl'] = "/images/default.png";
         return $line;
     }, $data);
+
     view('index', $data);
 });
 Route::add('/login', function () {
@@ -44,7 +48,7 @@ Route::add('/login', function () {
 Route::add('/postagem/([0-9]+)', function ($id) {
     $data = Post::getPost($id);
     if ($data) {
-        view("post", $data[0]);
+        view("post", $data[0], ["footerDark" => true]);
     } else {
         view('404', null, ["footerDark" => true]);
     }
@@ -52,14 +56,14 @@ Route::add('/postagem/([0-9]+)', function ($id) {
 
 Route::add('/criar', function () {
     checkSession();
-    view('criar');
+    view('criar', null, ["footerDark" => true]);
 });
 
 Route::add('/editar/([0-9]+)', function ($id) {
     checkSession();
     $data = Post::getPost($id);
     if ($data) {
-        view('editar', $data[0]);
+        view('editar', $data[0], ["footerDark" => true]);
     } else {
         view('404', null, ["footerDark" => true]);
     }
@@ -79,13 +83,39 @@ Route::add('/sair', function () {
 Route::add('/perfil', function () {
     checkSession();
     $data = Post::getAllUser($_SESSION['user']['id']);
-    view('perfil',$data, ["footerDark" => true]);
+    view('perfil', $data, ["footerDark" => true]);
 });
 
+Route::add('/postagens', function () {
+    $data = Post::getAll();
+
+    $data = array_map(function ($line) {
+        switch ($line['difficulty']) {
+            case 1:
+                $line['difficulty'] = 'Baixa';
+                break;
+            case 2:
+                $line['difficulty'] = 'Media';
+                break;
+            case 3:
+                $line['difficulty'] = 'Alta';
+                break;
+        }
+        return $line;
+    }, $data);
+
+    view('postagens', $data, ["footerDark" => true]);
+});
+Route::add('/perfil/configuracao', function () {
+    checkSession();
+    view('configuracao', null, ["footerDark" => true]);
+});
+
+
 /*
-
----- POST REQUESTS ----
-
+            
+            ---- POST REQUESTS ----
+            
 */
 
 Route::add('/criar', function () {
@@ -156,6 +186,24 @@ Route::add('/remover', function () {
     }
 }, 'post');
 
+Route::add('/perfil/nova-senha', function () {
+    checkSession();
+    if (isset($_POST['new_password']) && isset($_POST['old_password'])) {
+        if (!empty($_POST['new_password']) && !empty($_POST['old_password'])) {
+            try {
+                $res = User::changePassword($_SESSION['user']['id'], $_POST['old_password'], $_POST['new_password']);
+                if ($res) {
+                    http_response_code(200);
+                } else {
+                    http_response_code(500);
+                }
+            } catch (PDOException $exception) {
+                http_response_code(500);
+            }
+        }
+    }
+}, 'post');
+
 /*
 
 ---- 404 PAGE ----
@@ -177,7 +225,7 @@ function checkSession($reverse = false)
             header('Location:/');
             exit();
         }
-    }else{
+    } else {
         if (!isset($_SESSION['user'])) {
             header('Location:/login');
             exit();

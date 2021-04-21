@@ -11,9 +11,9 @@
         <p>
           <!-- Este site nasceu para auxiliar aqueles estão entrando na webart e até mesmo para aqueles que já estão nela. -->
           Muitas informações são necessárias para trabalharmos no nosso cotidiano, então acabamos por ter uma certa
-          dependência das as pessoas que possuem mais conhecimento. 
+          dependência das as pessoas que possuem mais conhecimento.
         </p>
-        <p>A proposta deste site é disponibilizar o máximo de informações possíveis a fim de propocionar uma maior independência 
+        <p>A proposta deste site é disponibilizar o máximo de informações possíveis a fim de propocionar uma maior independência
           para a equipe de suporte, trazendo agilidade na consulta de informações e aumentando a eficiência do nosso serviço possibiliando
           uma entrega mais rápida e de melhor qualidade para o cliente final.
         </p>
@@ -26,7 +26,7 @@
 </section>
 <section class="dark">
   <div class="container">
-    <h3 class="center">Artigos</h3>
+    <h3 class="center">Últimas Postagens</h3>
     <div class="row">
       <?php
       foreach ($data as $key => $value) {
@@ -41,6 +41,11 @@
         </div>";
       }
       ?>
+    </div>
+    <div class="row">
+      <div class="columns center" style="margin: 50px 0 0 0;">
+        <a class="button button-primary" href="/postagens">Ver mais postagens</a>
+      </div>
     </div>
   </div>
 </section>

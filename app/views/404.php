@@ -2,7 +2,7 @@
     #error404 {
         margin: auto;
         margin-top: 200px;
-        height: calc(100vh - 472px);
+        height: calc(100vh - 289px - 200px);
         text-align: center;
     }
 </style>

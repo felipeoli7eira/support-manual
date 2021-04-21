@@ -14,8 +14,7 @@ document.getElementById('postCode').addEventListener('keydown', function (e) {
         var end = this.selectionEnd;
 
         this.value = this.value.substring(0, start) + "  " + this.value.substring(end);
-        this.selectionStart =
-        this.selectionEnd = start + 2;
+        this.selectionStart = this.selectionEnd = start + 2;
     }
 });
 

@@ -14,13 +14,14 @@
         <p class="center" id="remove-message"></p>
         <div class="center">
             <input id="remove-id" type="hidden">
-            <a class="button button-primary" id="remove-post" rel="modal:close">Sim</a>
             <a class="button" rel="modal:close">Não</a>
+            <a class="button button-primary" id="remove-post" rel="modal:close">Sim</a>
         </div>
     </div>
     <div class="container">
         <br>
         <h3>Usuário: <?= $_SESSION['user']['name'] ?></h3>
+        <a href="/perfil/configuracao">Configurações</a>
         <div class="row">
             <div class="columns center">
                 <br />
