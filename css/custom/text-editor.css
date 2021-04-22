@@ -1,0 +1,11 @@
+#postCode {
+    text-align: left;
+    height: 400px;
+    font-family: monospace;
+    width: 100%;
+    border: 2px solid black;
+    padding: 5px;
+    white-space: pre;
+    overflow: auto;
+    resize: vertical
+}

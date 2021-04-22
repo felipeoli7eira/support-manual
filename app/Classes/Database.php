@@ -30,9 +30,9 @@ class Database
         $config = [
             "host" => "localhost",
             "port" => "3306",
-            "user" => "id16655165_root",
-            "password" => "]Po=kk+R|#@(*1O+",
-            "database" => "id16655165_support"
+            "user" => "root",
+            "password" => "",
+            "database" => "support"
         ];
         $dns = "mysql:host={$config['host']};port={$config['port']};dbname={$config['database']};charset=utf8";
         try {

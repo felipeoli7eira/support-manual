@@ -1,3 +1,3 @@
-<div class="post-content-view">
+<main>
     <?= $content; ?>
-</div>
+</main>

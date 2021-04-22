@@ -1,0 +1,52 @@
+.navbar {
+    padding: 5px 0 10px 0;
+}
+.title {
+    margin-bottom: -10px;
+    font-size: 50px;
+    font-variant: small-caps;
+    font-weight: 800;
+}
+.sub-tittle {
+    text-transform: capitalize;
+    font-weight: 400;
+}
+.button-perfil {
+    color: var(--white);
+    font-weight: 800;
+    margin: 0 10px 0 0;
+}
+.access-container {
+    text-align: right;
+}
+
+.access-container * {
+    margin: auto;
+}
+.profile-hover {
+    transition: 0.3s;
+    border-radius: 4px;
+    border: solid var(--white) 1px;
+    padding: 5px 10px;
+}
+
+.profile-hover:hover {
+    color: var(--black);
+    background-color: var(--white);
+    border: none;
+    border: solid var(--black) 1px;
+}
+
+.logout-hover {
+    transition: 0.3s;
+    border-radius: 4px;
+    border: solid var(--orange) 1px;
+    padding: 5px 10px;
+}
+
+.logout-hover:hover {
+    color: var(--white);
+    background-color: var(--orange);
+    border: none;
+    border: solid var(--orange) 1px;
+}
