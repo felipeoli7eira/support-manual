@@ -7,7 +7,7 @@ function updatePreview(newHtml) {
 
 updatePreview($("#postCode").val());
 
-document.getElementById('postCode').addEventListener('keydown', function (e) {
+document.getElementById("postCode").addEventListener("keydown", function (e) {
     if (e.keyCode == 9) {
         e.preventDefault();
         var start = this.selectionStart;

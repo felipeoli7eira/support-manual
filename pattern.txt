@@ -1,0 +1,4 @@
+Strings com aspas duplas. "nome";
+Formatação de chaves de acordo com a convenção do php;
+Nomes de variáveis em inglês;
+Classes e Ids no css lowercase e separados por -;

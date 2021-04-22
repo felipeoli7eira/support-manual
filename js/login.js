@@ -1,6 +1,6 @@
-$('form').on('submit',(event)=>{
+$("form").on("submit",(event)=>{
     event.preventDefault();
-    let data = $('form').serialize();
+    let data = $("form").serialize();
     $.ajax({
         url:"/login",
         type:"post",
@@ -10,10 +10,10 @@ $('form').on('submit',(event)=>{
         },
         error: ()=>{
             $("html, body").animate({ scrollTop: 0 }, 600);
-            let alertBox = $("<div></div>").text("Credênciais incorretas!").addClass('alert danger-alert')
-            $('info').append(alertBox).hide().delay(100).fadeIn(200);
-            $('info div').delay(2000).fadeOut(500,()=>{
-                $('info div').remove();
+            let alertBox = $("<div></div>").text("Credênciais incorretas!").addClass("alert danger-alert")
+            $("info").append(alertBox).hide().delay(100).fadeIn(200);
+            $("info div").delay(2000).fadeOut(500,()=>{
+                $("info div").remove();
             })
         }
     })

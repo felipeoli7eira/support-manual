@@ -1,13 +1,12 @@
 <?php
-ini_set('display_errors', 1);
+ini_set("display_errors", 1);
 
-require_once __DIR__ . '/vendor/autoload.php';
-require_once __DIR__ . '/app/utils/functions.php';
+require_once __DIR__ . "/vendor/autoload.php";
+require_once __DIR__ . "/app/utils/functions.php";
 
 use App\Classes\Post;
 use App\Classes\User;
 use Steampixel\Route;
-use App\Classes\PostManager;
 
 session_start();
 
@@ -17,98 +16,98 @@ session_start();
 
 */
 
-Route::add('/', function () {
-    $data = Post::getAll(4, 'DESC');
+Route::add("/", function () {
+    $data = Post::getAll(4, "DESC");
 
 
     $data = array_map(function ($line) {
-        switch ($line['difficulty']) {
+        switch ($line["difficulty"]) {
             case 1:
-                $line['difficulty'] = 'Baixa';
+                $line["difficulty"] = "Baixa";
                 break;
             case 2:
-                $line['difficulty'] = 'Media';
+                $line["difficulty"] = "Media";
                 break;
             case 3:
-                $line['difficulty'] = 'Alta';
+                $line["difficulty"] = "Alta";
                 break;
         }
-        if ($line['imageUrl'] == "") $line['imageUrl'] = "/images/default.png";
+        if ($line["imageUrl"] == "") $line["imageUrl"] = "/images/default.png";
         return $line;
     }, $data);
 
-    view('index', $data);
+    view("index", $data);
 });
-Route::add('/login', function () {
+Route::add("/login", function () {
     checkSession(true);
-    rawView('login');
+    rawView("login");
 });
 
 
-Route::add('/postagem/([0-9]+)', function ($id) {
+Route::add("/postagem/([0-9]+)", function ($id) {
     $data = Post::getPost($id);
     if ($data) {
         view("post", $data[0], ["footerDark" => true]);
     } else {
-        view('404', null, ["footerDark" => true]);
+        view("404", null, ["footerDark" => true]);
     }
 });
 
-Route::add('/criar', function () {
+Route::add("/criar", function () {
     checkSession();
-    view('criar', null, ["footerDark" => true]);
+    view("criar", null, ["footerDark" => true]);
 });
 
-Route::add('/editar/([0-9]+)', function ($id) {
+Route::add("/editar/([0-9]+)", function ($id) {
     checkSession();
     $data = Post::getPost($id);
     if ($data) {
-        view('editar', $data[0], ["footerDark" => true]);
+        view("editar", $data[0], ["footerDark" => true]);
     } else {
-        view('404', null, ["footerDark" => true]);
+        view("404", null, ["footerDark" => true]);
     }
 });
 
-Route::add('/teste', function () {
-    view('teste');
+Route::add("/teste", function () {
+    view("teste");
 });
 
-Route::add('/sair', function () {
+Route::add("/sair", function () {
     checkSession();
     session_destroy();
-    header('Location:/');
+    header("Location:/");
     exit();
 });
 
-Route::add('/perfil', function () {
+Route::add("/perfil", function () {
     checkSession();
-    $data = Post::getAllUser($_SESSION['user']['id']);
-    view('perfil', $data, ["footerDark" => true]);
+    $data = Post::getAllUser($_SESSION["user"]["id"]);
+    view("perfil", $data, ["footerDark" => true]);
 });
 
-Route::add('/postagens', function () {
+Route::add("/postagens", function () {
     $data = Post::getAll();
 
     $data = array_map(function ($line) {
-        switch ($line['difficulty']) {
+        switch ($line["difficulty"]) {
             case 1:
-                $line['difficulty'] = 'Baixa';
+                $line["difficulty"] = "Baixa";
                 break;
             case 2:
-                $line['difficulty'] = 'Media';
+                $line["difficulty"] = "Media";
                 break;
             case 3:
-                $line['difficulty'] = 'Alta';
+                $line["difficulty"] = "Alta";
                 break;
         }
         return $line;
     }, $data);
 
-    view('postagens', $data, ["footerDark" => true]);
+    view("postagens", $data, ["footerDark" => true]);
 });
-Route::add('/perfil/configuracao', function () {
+Route::add("/perfil/configuracao", function () {
     checkSession();
-    view('configuracao', null, ["footerDark" => true]);
+    view("configuracao", null, ["footerDark" => true]);
 });
 
 
@@ -118,30 +117,30 @@ Route::add('/perfil/configuracao', function () {
             
 */
 
-Route::add('/criar', function () {
+Route::add("/criar", function () {
     checkSession();
-    if (isset($_POST['postCode'])) {
+    if (isset($_POST["postCode"])) {
         try {
-            $res = Post::createPost($_POST['postName'], $_POST['imageUrl'], $_POST['postDifficulty'], $_POST['postCode'], $_SESSION['user']['id']);
+            $res = Post::createPost($_POST["postName"], $_POST["imageUrl"], $_POST["postDifficulty"], $_POST["postCode"], $_SESSION["user"]["id"]);
             if ($res) {
                 http_response_code(200);
             } else {
                 http_response_code(500);
             }
         } catch (PDOException $exception) {
-            echo '<pre>';
+            echo "<pre>";
             print_r($exception);
-            echo '</pre>';
+            echo "</pre>";
             http_response_code(505);
         }
     }
-}, 'post');
+}, "post");
 
-Route::add('/editar', function () {
+Route::add("/editar", function () {
     checkSession();
-    if (isset($_POST['postCode'])) {
+    if (isset($_POST["postCode"])) {
         try {
-            $res = Post::updatePost($_POST['id'], $_POST['postName'], $_POST['imageUrl'], $_POST['postDifficulty'], $_POST['postCode']);
+            $res = Post::updatePost($_POST["id"], $_POST["postName"], $_POST["imageUrl"], $_POST["postDifficulty"], $_POST["postCode"]);
             if ($res) {
                 http_response_code(200);
             } else {
@@ -149,17 +148,17 @@ Route::add('/editar', function () {
             }
         } catch (PDOException $exception) {
             http_response_code(500);
-            echo '<pre>';
+            echo "<pre>";
             print_r($exception);
-            echo '</pre>';
+            echo "</pre>";
         }
     }
-}, 'post');
+}, "post");
 
-Route::add('/login', function () {
-    if (isset($_POST['email'])) {
+Route::add("/login", function () {
+    if (isset($_POST["email"])) {
         try {
-            $res = User::login($_POST['email'], $_POST['password']);
+            $res = User::login($_POST["email"], $_POST["password"]);
             if ($res) {
                 http_response_code(200);
             } else {
@@ -169,12 +168,12 @@ Route::add('/login', function () {
             http_response_code(500);
         }
     }
-}, 'post');
-Route::add('/remover', function () {
+}, "post");
+Route::add("/remover", function () {
     checkSession();
-    if (isset($_POST['post_id'])) {
+    if (isset($_POST["post_id"])) {
         try {
-            $res = Post::removePost($_POST['post_id']);
+            $res = Post::removePost($_POST["post_id"]);
             if ($res) {
                 http_response_code(200);
             } else {
@@ -184,14 +183,14 @@ Route::add('/remover', function () {
             http_response_code(500);
         }
     }
-}, 'post');
+}, "post");
 
-Route::add('/perfil/nova-senha', function () {
+Route::add("/perfil/nova-senha", function () {
     checkSession();
-    if (isset($_POST['new_password']) && isset($_POST['old_password'])) {
-        if (!empty($_POST['new_password']) && !empty($_POST['old_password'])) {
+    if (isset($_POST["new_password"]) && isset($_POST["old_password"])) {
+        if (!empty($_POST["new_password"]) && !empty($_POST["old_password"])) {
             try {
-                $res = User::changePassword($_SESSION['user']['id'], $_POST['old_password'], $_POST['new_password']);
+                $res = User::changePassword($_SESSION["user"]["id"], $_POST["old_password"], $_POST["new_password"]);
                 if ($res) {
                     http_response_code(200);
                 } else {
@@ -202,7 +201,7 @@ Route::add('/perfil/nova-senha', function () {
             }
         }
     }
-}, 'post');
+}, "post");
 
 /*
 
@@ -211,23 +210,23 @@ Route::add('/perfil/nova-senha', function () {
 */
 
 Route::pathNotFound(function ($path) {
-    header('HTTP/1.0 404 Not Found');
-    view('404', null, ["footerDark" => true]);
+    header("HTTP/1.0 404 Not Found");
+    view("404", null, ["footerDark" => true]);
 });
 
 
-Route::run('/');
+Route::run("/");
 
 function checkSession($reverse = false)
 {
     if ($reverse) {
-        if (isset($_SESSION['user'])) {
-            header('Location:/');
+        if (isset($_SESSION["user"])) {
+            header("Location:/");
             exit();
         }
     } else {
-        if (!isset($_SESSION['user'])) {
-            header('Location:/login');
+        if (!isset($_SESSION["user"])) {
+            header("Location:/login");
             exit();
         }
     }

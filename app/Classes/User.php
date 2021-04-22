@@ -32,8 +32,8 @@ class User
         if ($result) {
             $data = $statement->fetch(PDO::FETCH_ASSOC);
             if ($data) {
-                if (password_verify($password, $data['password'])) {
-                    $_SESSION['user'] = ["id" => $data['id'], "access" => $data['access'], "name" => $data['name']];
+                if (password_verify($password, $data["password"])) {
+                    $_SESSION["user"] = ["id" => $data["id"], "access" => $data["access"], "name" => $data["name"]];
                     return true;
                 }
             } else {
@@ -45,8 +45,6 @@ class User
     public static function changePassword(int $id, string $oldPassword, string $newPassword): bool
     {
         if ($oldPassword == $newPassword) return false;
-
-
 
         $con = Database::connect();
 
@@ -61,7 +59,7 @@ class User
         if ($result) {
             $data = $statement->fetch(PDO::FETCH_ASSOC);
             if ($data) {
-                if (password_verify($oldPassword, $data['password'])) {
+                if (password_verify($oldPassword, $data["password"])) {
                     $newPassword = password_hash($newPassword, PASSWORD_DEFAULT);
 
                     $sql = "UPDATE users SET password = :password WHERE id = :id";

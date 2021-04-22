@@ -41,11 +41,11 @@ class Post
         $sql = "UPDATE posts SET title = :title, imageUrl = :imageUrl, difficulty = :difficulty, content = :content WHERE id = :id";
         $statement = $con->prepare($sql);
 
-        $statement->bindValue(':title', $title);
-        $statement->bindValue(':imageUrl', $imageUrl);
-        $statement->bindValue(':difficulty', $difficulty);
-        $statement->bindValue(':content', $content);
-        $statement->bindValue(':id', $id);
+        $statement->bindValue(":title", $title);
+        $statement->bindValue(":imageUrl", $imageUrl);
+        $statement->bindValue(":difficulty", $difficulty);
+        $statement->bindValue(":content", $content);
+        $statement->bindValue(":id", $id);
 
         $result = $statement->execute();
 

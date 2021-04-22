@@ -30,17 +30,17 @@ class Database
         $config = [
             "host" => "localhost",
             "port" => "3306",
-            "user" => "root",
-            "password" => "",
-            "database" => "support"
+            "user" => "id16655165_root",
+            "password" => "]Po=kk+R|#@(*1O+",
+            "database" => "id16655165_support"
         ];
         $dns = "mysql:host={$config['host']};port={$config['port']};dbname={$config['database']};charset=utf8";
         try {
-            return new PDO($dns, $config['user'], $config['password']);
+            return new PDO($dns, $config["user"], $config["password"]);
         } catch (PDOException $e) {
-            echo '<pre>';
+            echo "<pre>";
             print_r($e->getMessage());
-            echo '</pre>';
+            echo "</pre>";
             exit;
         }
     }
