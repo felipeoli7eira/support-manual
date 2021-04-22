@@ -13,7 +13,7 @@
 
 function view(string $viewName, ?array $data = [], ?array $config = null): void
 {
-    if(!file_exists(__DIR__ . "\\..\\views\\{$viewName}.php"))
+    if(!file_exists(__DIR__ . "/../views/{$viewName}.php"))
     {
         throw new Exception("Arquivo não existente");
     }
@@ -22,13 +22,13 @@ function view(string $viewName, ?array $data = [], ?array $config = null): void
     {
         extract($data);
     }    
-    require __DIR__ . "\\..\\views\\template\\header.php";
-    require __DIR__ . "\\..\\views\\{$viewName}.php";
-    require __DIR__ . "\\..\\views\\template\\footer.php";
+    require __DIR__ . "/../views/template/header.php";
+    require __DIR__ . "/../views/{$viewName}.php";
+    require __DIR__ . "/../views/template/footer.php";
 }
 function rawView(string $viewName, ?array $data = [], ?array $config = null): void
 {
-    if(!file_exists(__DIR__ . "\\..\\views\\{$viewName}.php"))
+    if(!file_exists(__DIR__ . "/../views/{$viewName}.php"))
     {
         throw new Exception("Arquivo não existente");
     }
@@ -37,5 +37,5 @@ function rawView(string $viewName, ?array $data = [], ?array $config = null): vo
     {
         extract($data);
     }
-    require __DIR__ . "\\..\\views\\{$viewName}.php";
+    require __DIR__ . "/../views/{$viewName}.php";
 }
