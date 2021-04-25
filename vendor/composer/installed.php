@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '46a0a6b043b68e958f69d20c6b6e80b96f3caf3d',
+    'reference' => 'bf977c1269047415c296425883376f5e21e8c5e1',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '46a0a6b043b68e958f69d20c6b6e80b96f3caf3d',
+      'reference' => 'bf977c1269047415c296425883376f5e21e8c5e1',
     ),
     'coffeecode/router' => 
     array (
@@ -28,15 +28,6 @@
       array (
       ),
       'reference' => '29f73e12351a116e9bbb3f695595777a09e18077',
-    ),
-    'steampixel/simple-php-router' => 
-    array (
-      'pretty_version' => '0.7.0',
-      'version' => '0.7.0.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '91aec2d0bca3619c0552e2bfcebb8936e6f83bb9',
     ),
   ),
 );
