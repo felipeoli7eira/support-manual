@@ -4,22 +4,23 @@ ini_set('display_errors', 1);
 require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/app/utils/functions.php';
 
+use CoffeeCode\Router\Router;
+
 use App\Classes\Post;
 use App\Classes\User;
-use Steampixel\Route;
 use App\Classes\PostManager;
 
 session_start();
 
-/*
+/* ---- ROUTER INIT ---- */
 
----- GET REQUESTS ----
+$router = new Router("/");
 
-*/
 
-Route::add('/', function () {
+/* ---- GET REQUESTS ---- */
+
+$router->get("/", function () {
     $data = Post::getAll(4, 'DESC');
-
 
     $data = array_map(function ($line) {
         switch ($line['difficulty']) {
@@ -39,14 +40,14 @@ Route::add('/', function () {
 
     view('index', $data);
 });
-Route::add('/login', function () {
+
+$router->get("/login", function () {
     checkSession(true);
     rawView('login');
 });
 
-
-Route::add('/postagem/([0-9]+)', function ($id) {
-    $data = Post::getPost($id);
+$router->get("/postagem/{id}", function ($req) {
+    $data = Post::getPost($req['id']);
     if ($data) {
         view("post", $data[0], ["footerDark" => true]);
     } else {
@@ -54,14 +55,14 @@ Route::add('/postagem/([0-9]+)', function ($id) {
     }
 });
 
-Route::add('/criar', function () {
+$router->get('/criar', function () {
     checkSession();
     view('criar', null, ["footerDark" => true]);
 });
 
-Route::add('/editar/([0-9]+)', function ($id) {
+$router->get('/editar/{id}', function ($data) {
     checkSession();
-    $data = Post::getPost($id);
+    // $data = Post::getPost($id);
     if ($data) {
         view('editar', $data[0], ["footerDark" => true]);
     } else {
@@ -69,24 +70,20 @@ Route::add('/editar/([0-9]+)', function ($id) {
     }
 });
 
-Route::add('/teste', function () {
-    view('teste');
-});
-
-Route::add('/sair', function () {
+$router->get('/sair', function () {
     checkSession();
     session_destroy();
     header('Location:/');
     exit();
 });
 
-Route::add('/perfil', function () {
+$router->get('/perfil', function () {
     checkSession();
     $data = Post::getAllUser($_SESSION['user']['id']);
     view('perfil', $data, ["footerDark" => true]);
 });
 
-Route::add('/postagens', function () {
+$router->get('/postagens', function () {
     $data = Post::getAll();
 
     $data = array_map(function ($line) {
@@ -106,19 +103,14 @@ Route::add('/postagens', function () {
 
     view('postagens', $data, ["footerDark" => true]);
 });
-Route::add('/perfil/configuracao', function () {
+$router->get('/perfil/configuracao', function () {
     checkSession();
     view('configuracao', null, ["footerDark" => true]);
 });
 
+/* ---- POST REQUESTS ---- */
 
-/*
-            
-            ---- POST REQUESTS ----
-            
-*/
-
-Route::add('/criar', function () {
+$router->post('/criar', function () {
     checkSession();
     if (isset($_POST['postCode'])) {
         try {
@@ -137,7 +129,7 @@ Route::add('/criar', function () {
     }
 }, 'post');
 
-Route::add('/editar', function () {
+$router->post('/editar', function () {
     checkSession();
     if (isset($_POST['postCode'])) {
         try {
@@ -156,7 +148,7 @@ Route::add('/editar', function () {
     }
 }, 'post');
 
-Route::add('/login', function () {
+$router->post('/login', function () {
     if (isset($_POST['email'])) {
         try {
             $res = User::login($_POST['email'], $_POST['password']);
@@ -170,7 +162,8 @@ Route::add('/login', function () {
         }
     }
 }, 'post');
-Route::add('/remover', function () {
+
+$router->post('/remover', function () {
     checkSession();
     if (isset($_POST['post_id'])) {
         try {
@@ -186,7 +179,7 @@ Route::add('/remover', function () {
     }
 }, 'post');
 
-Route::add('/perfil/nova-senha', function () {
+$router->post('/perfil/nova-senha', function () {
     checkSession();
     if (isset($_POST['new_password']) && isset($_POST['old_password'])) {
         if (!empty($_POST['new_password']) && !empty($_POST['old_password'])) {
@@ -204,19 +197,15 @@ Route::add('/perfil/nova-senha', function () {
     }
 }, 'post');
 
-/*
+$router->dispatch();
 
----- 404 PAGE ----
+/* ---- 404 PAGE ---- */
 
-*/
-
-Route::pathNotFound(function ($path) {
-    header('HTTP/1.0 404 Not Found');
+if ($router->error()) {
     view('404', null, ["footerDark" => true]);
-});
+}
 
-
-Route::run('/');
+/* ---- ROUTER END ---- */
 
 function checkSession($reverse = false)
 {
