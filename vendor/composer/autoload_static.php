@@ -7,6 +7,10 @@ namespace Composer\Autoload;
 class ComposerStaticInit3a543015bb88006a63e6000564a3305c
 {
     public static $prefixLengthsPsr4 = array (
+        'C' => 
+        array (
+            'CoffeeCode\\Router\\' => 18,
+        ),
         'A' => 
         array (
             'App\\' => 4,
@@ -14,19 +18,13 @@ class ComposerStaticInit3a543015bb88006a63e6000564a3305c
     );
 
     public static $prefixDirsPsr4 = array (
+        'CoffeeCode\\Router\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/coffeecode/router/src',
+        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
-        ),
-    );
-
-    public static $prefixesPsr0 = array (
-        'S' => 
-        array (
-            'Steampixel' => 
-            array (
-                0 => __DIR__ . '/..' . '/steampixel/simple-php-router/src',
-            ),
         ),
     );
 
@@ -39,7 +37,6 @@ class ComposerStaticInit3a543015bb88006a63e6000564a3305c
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit3a543015bb88006a63e6000564a3305c::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit3a543015bb88006a63e6000564a3305c::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit3a543015bb88006a63e6000564a3305c::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit3a543015bb88006a63e6000564a3305c::$classMap;
 
         }, null, ClassLoader::class);

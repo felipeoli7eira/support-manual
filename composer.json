@@ -5,6 +5,6 @@
         }
     },
     "require": {
-        "steampixel/simple-php-router": "^0.7.0"
+        "coffeecode/router": "^1.0"
     }
 }

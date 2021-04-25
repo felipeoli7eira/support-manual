@@ -1,26 +1,29 @@
 {
     "packages": [
         {
-            "name": "steampixel/simple-php-router",
-            "version": "0.7.0",
-            "version_normalized": "0.7.0.0",
+            "name": "coffeecode/router",
+            "version": "1.0.8",
+            "version_normalized": "1.0.8.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/steampixel/simplePHPRouter.git",
-                "reference": "91aec2d0bca3619c0552e2bfcebb8936e6f83bb9"
+                "url": "https://github.com/robsonvleite/router.git",
+                "reference": "29f73e12351a116e9bbb3f695595777a09e18077"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/steampixel/simplePHPRouter/zipball/91aec2d0bca3619c0552e2bfcebb8936e6f83bb9",
-                "reference": "91aec2d0bca3619c0552e2bfcebb8936e6f83bb9",
+                "url": "https://api.github.com/repos/robsonvleite/router/zipball/29f73e12351a116e9bbb3f695595777a09e18077",
+                "reference": "29f73e12351a116e9bbb3f695595777a09e18077",
                 "shasum": ""
             },
-            "time": "2021-03-22T08:11:59+00:00",
+            "require": {
+                "php": ">=7.2"
+            },
+            "time": "2021-03-21T18:45:16+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
-                "psr-0": {
-                    "Steampixel": "src/"
+                "psr-4": {
+                    "CoffeeCode\\Router\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -29,22 +32,25 @@
             ],
             "authors": [
                 {
-                    "name": "Christoph Stitz",
-                    "email": "info@steampixel.de",
-                    "homepage": "https://steampixel.de/"
-                },
-                {
-                    "name": "Maximilian Götz",
-                    "email": "contact@maxbits.net",
-                    "homepage": "https://www.maxbits.net/"
+                    "name": "Robson V. Leite",
+                    "email": "cursos@upinside.com.br",
+                    "role": "Developer"
                 }
             ],
-            "description": "This is a simple and small PHP router that can handel the whole url routing for your project.",
+            "description": "A classic CoffeeCode Router is easy, fast and extremely uncomplicated. Create and manage your routes in minutes!",
+            "homepage": "http://www.upinside.com.br",
+            "keywords": [
+                "Coffeecode",
+                "route",
+                "router",
+                "routes",
+                "upinside"
+            ],
             "support": {
-                "issues": "https://github.com/steampixel/simplePHPRouter/issues",
-                "source": "https://github.com/steampixel/simplePHPRouter/tree/0.7.0"
+                "issues": "https://github.com/robsonvleite/router/issues",
+                "source": "https://github.com/robsonvleite/router/tree/1.0.8"
             },
-            "install-path": "../steampixel/simple-php-router"
+            "install-path": "../coffeecode/router"
         }
     ],
     "dev": true,
