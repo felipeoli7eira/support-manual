@@ -87,19 +87,42 @@ class Post
         ]);
         return $result;
     }
-    public static function getAll(int $limit = null, string $order = "ASC"): array
+
+    public static function getCountPosts()
     {
         $con = Database::connect();
 
-        $sql = (isset($limit)) ? "SELECT * FROM posts ORDER BY id $order LIMIT $limit" : "SELECT * FROM posts ORDER BY id $order";
+        $sql = "SELECT COUNT(*) as count FROM posts";
 
         $statement = $con->prepare($sql);
 
         $result = $statement->execute();
+        if ($result) {
+            [$count] = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $count['count'];
+        } else {
+            return;
+        }
+    }
+
+    public static function getAll(int $page = 1, int $limit = null, string $order = "ASC"): array
+    {
+        $con = Database::connect();
+        $limit= 5;
+        $count = ceil(self::getCountPosts() / $limit);
+
+        $offset = ($page-1) * $limit ;
+
+        $sql = "SELECT * FROM posts ORDER BY id $order LIMIT $limit OFFSET $offset";
+        
+        $statement = $con->prepare($sql);
+        
+        $result = $statement->execute();
 
         if ($result) {
             $data = $statement->fetchAll(PDO::FETCH_ASSOC);
-            return $data;
+            http_response_code(200);
+            return ['data'=>$data,'pages'=>$count];
         } else {
             return [];
         }
