@@ -16,7 +16,6 @@ session_start();
 
 $router = new Router("/");
 
-
 /* ---- GET REQUESTS ---- */
 
 $router->get("/", function () {
@@ -83,26 +82,35 @@ $router->get('/perfil', function () {
     view('perfil', $data, ["footerDark" => true]);
 });
 
-$router->get('/postagens', function () {
-    $data = Post::getAll();
+$router->get('/postagens', function ($req) {
+    // $data = Post::getAll();
 
-    $data = array_map(function ($line) {
-        switch ($line['difficulty']) {
-            case 1:
-                $line['difficulty'] = 'Baixa';
-                break;
-            case 2:
-                $line['difficulty'] = 'Media';
-                break;
-            case 3:
-                $line['difficulty'] = 'Alta';
-                break;
-        }
-        return $line;
-    }, $data);
+    // $data = array_map(function ($line) {
+    //     switch ($line['difficulty']) {
+    //         case 1:
+    //             $line['difficulty'] = 'Baixa';
+    //             break;
+    //         case 2:
+    //             $line['difficulty'] = 'Media';
+    //             break;
+    //         case 3:
+    //             $line['difficulty'] = 'Alta';
+    //             break;
+    //     }
+    //     return $line;
+    // }, $data);
 
-    view('postagens', $data, ["footerDark" => true]);
+    view('postagens', null, ["footerDark" => true]);
 });
+
+$router->get('/getPostagens', function(){
+    $page = $_GET['page'];
+    $data = Post::getAll($page);
+
+    echo json_encode($data);
+});
+
+
 $router->get('/perfil/configuracao', function () {
     checkSession();
     view('configuracao', null, ["footerDark" => true]);
