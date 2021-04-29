@@ -18,22 +18,28 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
+                    <!-- <?php
                     foreach ($data as $key => $value) {
                     ?>
                         <tr onclick="window.location.href='postagem/<?=$value['id']?>'">
-                            <td><?= $value['title'] ?></td>
+                            <td><?= $tester['title'] ?></td>
                             <td><?= $value['difficulty'] ?></td>
                             <td><?= $value['create_date'] ?></td>
                         </tr>
                     <?php
                     }
-                    ?>
+                    ?> -->
                 </tbody>
             </table>
         </div>
+        <ul class="" style="display: flex;">
+            <!-- <li class="page-item active"><span class="page-number">1</span> -->
+            <!-- <li class="page-item"><button class="page-number">2</button></li> -->
+            <!-- <li class="page-item"><a class="page-number" href="url_topage">3</a></li> -->
+        </ul>
     </div>
 </main>
+<script src="/js/pagination.js"></script>
 
 <script>
     $("#post-filter").keyup((e) => {
