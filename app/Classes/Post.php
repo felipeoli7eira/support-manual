@@ -108,21 +108,39 @@ class Post
     public static function getAll(int $page = 1, int $limit = null, string $order = "ASC"): array
     {
         $con = Database::connect();
-        $limit= 5;
+        $limit = 5;
         $count = ceil(self::getCountPosts() / $limit);
 
-        $offset = ($page-1) * $limit ;
+        $offset = ($page - 1) * $limit;
 
         $sql = "SELECT * FROM posts ORDER BY id $order LIMIT $limit OFFSET $offset";
-        
+
         $statement = $con->prepare($sql);
-        
+
         $result = $statement->execute();
 
         if ($result) {
             $data = $statement->fetchAll(PDO::FETCH_ASSOC);
             http_response_code(200);
-            return ['data'=>$data,'pages'=>$count];
+            return ['data' => $data, 'pages' => $count];
+        } else {
+            return [];
+        }
+    }
+    public static function getLast(int $limit = null, string $order = "ASC"): array
+    {
+
+        $con = Database::connect();
+
+        $sql = (isset($limit)) ? "SELECT * FROM posts ORDER BY id $order LIMIT $limit" : "SELECT * FROM posts ORDER BY id $order";
+
+        $statement = $con->prepare($sql);
+
+        $result = $statement->execute();
+
+        if ($result) {
+            $data = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $data;
         } else {
             return [];
         }

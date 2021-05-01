@@ -19,7 +19,7 @@ $router = new Router("/");
 /* ---- GET REQUESTS ---- */
 
 $router->get("/", function () {
-    $data = Post::getAll(4, 'DESC');
+    $data = Post::getLast(4, 'DESC');
 
     $data = array_map(function ($line) {
         switch ($line['difficulty']) {
@@ -78,7 +78,7 @@ $router->get('/sair', function () {
 
 $router->get('/perfil', function () {
     checkSession();
-    $data = Post::getAllUser($_SESSION['user']['id']);
+    $data = Post::getAllUser((int)$_SESSION['user']['id']);
     view('perfil', $data, ["footerDark" => true]);
 });
 
